@@ -16,7 +16,6 @@ public class App extends javafx.application.Application {
         primaryStage.show();
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }

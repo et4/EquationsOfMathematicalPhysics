@@ -1,9 +1,11 @@
 package model;
 
-public class P extends Function{
+import util.Constants;
+
+public class P extends Function {
 
     public P(double t) {
-        super(t);
+        super(t, 2 * Math.PI * Constants.R);
     }
 
     @Override
