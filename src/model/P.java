@@ -14,10 +14,11 @@ public class P extends Function {
     public double getValue(double x) {
         int n = 10;
         double result = 0;
-        for (int k = 0; k < n; k++) {
-            result += (2 * sin(k * PI / 4.0) - sin(k * PI / 2.0)) * sin(k * x / (2 * R));
-            result += (2 * cos(k * PI / 4.0) - cos(k * PI / 2.0) - 1) * cos(k * x / (2 * R));
-            result *= (1 / (k * k)) * exp(-t * (PI * k * A / (2 * R)) * (PI * k * A / (2 * R)));
+        for (int k = 1; k < n; k++) {
+            double sum = 0;
+            sum += (2 * sin(k * PI / 4.0) - sin(k * PI / 2.0)) * sin(k * x / (2 * R));
+            sum += (2 * cos(k * PI / 4.0) - cos(k * PI / 2.0) - 1) * cos(k * x / (2 * R));
+            result += sum * (1 / (k * k)) * exp(-t * (k * A / (2.0 * R)) * (k * A / (2.0 * R)));
         }
         result *= (4 / (PI * PI));
 
