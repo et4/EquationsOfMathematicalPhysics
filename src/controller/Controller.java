@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Slider;
+import model.P;
 import model.Q;
 
 import java.net.URL;
@@ -23,9 +24,12 @@ public class Controller implements Initializable {
 
     @FXML
     private void paint() {
+        chart.getData().clear();
 //        W w = new W(slider.getValue());
 //        chart.getData().add(w.getSeries());
         Q q = new Q(slider.getValue());
         chart.getData().add(q.getSeries());
+        P p = new P(slider.getValue());
+        chart.getData().add(p.getSeries());
     }
 }
