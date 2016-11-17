@@ -22,7 +22,7 @@ public class Q extends Function {
         for (int m = 0; m < n; m++) {
             result += (2 / L) * (sin(3 * PI * m / 4) - sin(PI * m / 4)) *
                     cos(PI * m * x / L) * exp(-t * (pow(PI * m * A / L, 2) +
-                    2 * pow(A, 3) / D));
+                    2 * pow(A, 2) * AL / D));
         }
         return result;
     }
