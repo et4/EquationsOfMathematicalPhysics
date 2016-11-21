@@ -3,7 +3,9 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.Border;
 import model.P;
 import model.Q;
 
@@ -16,20 +18,27 @@ public class Controller implements Initializable {
     LineChart<Number, Number> chart;
     @FXML
     Slider slider;
+    @FXML
+    NumberAxis yAxis;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        chart.setCreateSymbols(false);
+        chart.setLegendVisible(false);
+//        chart.getYAxis().setAutoRanging(false);
+        yAxis.setLowerBound(0);
+        yAxis.setUpperBound(0.0001);
     }
 
     @FXML
     private void paint() {
         chart.getData().clear();
+
 //        W w = new W(slider.getValue());
 //        chart.getData().add(w.getSeries());
         Q q = new Q(slider.getValue());
         chart.getData().add(q.getSeries());
-        P p = new P(slider.getValue());
-        chart.getData().add(p.getSeries());
+//        P p = new P(slider.getValue());
+//        chart.getData().add(p.getSeries());
     }
 }
