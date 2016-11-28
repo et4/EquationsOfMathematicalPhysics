@@ -17,13 +17,13 @@ public class Q extends Function {
 
     @Override
     public double getValue(double x) {
-        int n = 1000;
+        int n = 100;//2 6 10
         double result = 0.5;
-        for (int m = 1; m < n; m++) {
+        for (int m = 2; m < n; m += 4) {
             result += (sin(3 * PI * m / 4) - sin(PI * m / 4)) *
-                    exp(-t * (pow(PI * m * A / L, 2))) *
-                    cos(PI * m * x / L);
+                    exp(-t * ((K / C) * pow(PI * m / L, 2))) *
+                    cos(PI * m * x / L) * (2 / (PI * m));
         }
-        return (2 / L) * result * exp(-t * 2 * pow(A, 2) * AL / D);
+        return result * exp(-t * 2 * AL / (D * C));
     }
 }
