@@ -38,7 +38,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="998.0"
                             SplitPane.resizableWithParent="false">
                     <children>
-                        <Slider fx:id="slider" blockIncrement="0.1" layoutX="20.0" layoutY="52.0" max="100.0"
+                        <Slider fx:id="slider" blockIncrement="0.1" layoutX="20.0" layoutY="52.0" max="200.0"
                                 onMouseReleased="#paint" prefHeight="18.0" prefWidth="958.0" value="4.0"
                                 AnchorPane.bottomAnchor="33.0"/>
                     </children>
