@@ -38,7 +38,7 @@ public class Controller implements Initializable {
 //        chart.getData().add(w.getSeries());
         Q q = new Q(slider.getValue());
         chart.getData().add(q.getSeries());
-//        P p = new P(slider.getValue());
-//        chart.getData().add(p.getSeries());
+        P p = new P(slider.getValue());
+        chart.getData().add(p.getSeries());
     }
 }
