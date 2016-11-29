@@ -12,7 +12,7 @@ public class P extends Function {
 
     @Override
     public double getValue(double x) {
-        int n = 50;
+        int n = 100;
         double result = 0.0;
         for (int k = 1; k < n; k++) {
             double sum = 0.0;
@@ -21,7 +21,7 @@ public class P extends Function {
             result += sum * (1.0 / (k * k)) * exp(-t * (k * A / (2.0 * R)) * (k * A / (2.0 * R)));
         }
         result *= (4.0 / (PI * PI));
-
-        return result + 1.0 / 8.0 - (R - 1.0) / (2.0 * PI * R);
+        double a0 = (0.125 + (PI - 1.0) / (2.0 * PI * R));
+        return result + a0 / 2.0;
     }
 }

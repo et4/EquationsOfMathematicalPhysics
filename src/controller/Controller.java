@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Slider;
-import javafx.scene.layout.Border;
 import model.P;
 import model.Q;
 
