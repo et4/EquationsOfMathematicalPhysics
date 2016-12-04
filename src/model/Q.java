@@ -23,6 +23,7 @@ public class Q extends Function {
             result += (sin(3 * PI * m / 4) - sin(PI * m / 4)) *
                     exp(-t * ((K / C) * pow(PI * m / L, 2))) *
                     cos(PI * m * x / L) * (2 / (PI * m));
+//            System.out.println(result);
         }
         return result * exp(-t * 2 * AL / (D * C));
     }
