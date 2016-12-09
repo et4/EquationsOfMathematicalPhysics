@@ -4,6 +4,7 @@ import javafx.scene.chart.XYChart;
 
 import static util.Constants.AMOUNT_SAMPLING_INTERVAL;
 import static util.Constants.L;
+import static util.Constants.R;
 
 public abstract class Function {
 
