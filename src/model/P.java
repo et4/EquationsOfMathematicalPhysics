@@ -12,11 +12,11 @@ public class P extends Function {
 
 
     private double getA(int k) {
-        return 8.0 * (2.0 * cos(k * PI / 4.0) - 1.0 - cos(k * PI / 2.0)) / (k * k * PI * PI);
+        return 2.0 * (2.0 * cos(k * PI / 2.0) - 1.0 - cos(k * PI)) / (k * k * PI * PI);
     }
 
     private double getB(int k) {
-        return 8.0 * (2.0 * sin(k * PI / 4.0) - sin(k * PI / 2.0)) / (k * k * PI * PI);
+        return 2.0 * (2.0 * sin(k * PI / 2.0) - sin(k * PI)) / (k * k * PI * PI);
     }
 
 
@@ -26,9 +26,9 @@ public class P extends Function {
         double result = 0.0;
         for (int k = 1; k < n; k++) {
             double sum = 0.0;
-            sum += getB(k) * sin(k * x / (2.0 * R));
-            sum += getA(k) * cos(k * x / (2.0 * R));
-            result += sum * exp(-t * (k * A / (2.0 * R)) * (k * A / (2.0 * R)));
+            sum += getB(k) * sin(k * x /  R);
+            sum += getA(k) * cos(k * x / R);
+            result += sum * exp(-t * (k * A / R) * (k * A / R));
         }
         double a0 = 0.5;
         result += a0 / 2.0;
