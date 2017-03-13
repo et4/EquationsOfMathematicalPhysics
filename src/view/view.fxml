@@ -9,16 +9,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="controller.Controller">
-    <columnConstraints>
-        <ColumnConstraints/>
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints/>
-    </rowConstraints>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.Controller">
     <children>
-        <SplitPane dividerPositions="0.865979381443299" orientation="VERTICAL" prefHeight="800.0" prefWidth="1000.0">
+        <SplitPane dividerPositions="0.865979381443299" orientation="VERTICAL" prefHeight="800.0" prefWidth="1000.0"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                   AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0"
                             SplitPane.resizableWithParent="false">
@@ -30,20 +27,32 @@
                                 <NumberAxis side="BOTTOM"/>
                             </xAxis>
                             <yAxis>
-                                <NumberAxis side="LEFT" fx:id="yAxis" lowerBound="0" upperBound="1"/>
+                                <NumberAxis fx:id="yAxis" lowerBound="0" side="LEFT" upperBound="1"/>
                             </yAxis>
                         </LineChart>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="70.0" prefWidth="998.0"
+                <AnchorPane maxHeight="100.0" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="807.0"
                             SplitPane.resizableWithParent="false">
                     <children>
-                        <Slider fx:id="slider" blockIncrement="0.1" layoutX="20.0" layoutY="52.0" max="200.0"
-                                onMouseReleased="#paint" prefHeight="18.0" prefWidth="958.0" value="4.0"
-                                AnchorPane.bottomAnchor="33.0"/>
+                        <Slider fx:id="slider" blockIncrement="0.1" layoutX="20.0" layoutY="53.0" max="200.0"
+                                onMouseReleased="#paint" prefHeight="18.0" prefWidth="351.0" showTickLabels="true"
+                                value="4.0" AnchorPane.leftAnchor="20.0"/>
+                        <Label layoutX="419.0" layoutY="14.0" text="Количество интервалов дробления I:"
+                               AnchorPane.leftAnchor="419.0"/>
+                        <Label layoutX="419.0" layoutY="51.0" text="Количество интервалов дробления K:"
+                               AnchorPane.leftAnchor="419.0"/>
+                        <TextField fx:id="textBoxI" layoutX="691.0" layoutY="9.0" prefHeight="31.0" prefWidth="82.0"
+                                   text="20" AnchorPane.leftAnchor="691.0"/>
+                        <TextField fx:id="textBoxK" layoutX="691.0" layoutY="46.0" prefHeight="31.0" prefWidth="82.0"
+                                   text="200" AnchorPane.leftAnchor="691.0"/>
+                        <Label layoutX="124.0" layoutY="14.0" text="Изменение времени"/>
+                        <Button fx:id="buttonOK" layoutX="793.0" layoutY="9.0" mnemonicParsing="false"
+                                onAction="#okEvent" prefHeight="31.0" prefWidth="75.0" text="OK"
+                                AnchorPane.leftAnchor="793.0"/>
                     </children>
                 </AnchorPane>
             </items>
         </SplitPane>
     </children>
-</GridPane>
+</AnchorPane>

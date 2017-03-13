@@ -31,7 +31,8 @@ public abstract class Function {
     }
 
     public XYChart.Series<Number, Number> getSeries() {
-        XYChart.Series series = new XYChart.Series();
+        XYChart.Series<Number, Number> series = new XYChart.Series();
+        series.setName("Методом Фурье");
         double x = 0;
         double h = border / AMOUNT_SAMPLING_INTERVAL;
         for (int i = 0; i < y.length; i++) {

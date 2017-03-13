@@ -17,9 +17,9 @@ public class Q extends Function {
 
     @Override
     public double getValue(double x) {
-        int n = 100;//2 6 10
+        int n = 200;//2 6 10
         double result = 0.5;
-        for (int m = 2; m < n; m += 4) {
+        for (int m = 1; m < n; m++) {
             result += (sin(3 * PI * m / 4) - sin(PI * m / 4)) *
                     exp(-t * ((K / C) * pow(PI * m / L, 2))) *
                     cos(PI * m * x / L) * (2 / (PI * m));
