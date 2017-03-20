@@ -1,7 +1,5 @@
 package util;
 
-import static java.lang.Math.sqrt;
-
 public class Constants {
     private Constants() {
 
@@ -16,5 +14,4 @@ public class Constants {
     public static final double AL = 10.0;
     public static final double Uc = 0.0;
     public static final double T = 200.0;
-    public static final double A = sqrt(K/C);
 }

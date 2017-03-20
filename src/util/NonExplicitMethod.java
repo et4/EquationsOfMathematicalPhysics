@@ -12,7 +12,8 @@ public class NonExplicitMethod {
         double L = 2.0 * Math.PI * R;
         double hx = L / I;
         double ht = T / K;
-        I++;K++;
+        I++;
+        K++;
         double[][] P = new double[I][K];
         double[] Pk = new double[I];
 
@@ -102,23 +103,17 @@ public class NonExplicitMethod {
         }
 
 
-        for (int k = K; k >= 2; k--) {
-            if (k != 0) {
-                P[0][k] = P[I][k];
-                //P[1][k] = P[I + 1][k];
-            }
-            for (int i = 1; i <= I - 1; i++) {
-                P[i][k - 1] =
-                        -(ht * Constants.K * (P[i + 1][k] - 2 * P[i][k] + P[i - 1][k])) / (Constants.C * hx * hx) + P[i][k];
-            }
-        }
+        for (int k = 0; k <= K - 1; k++) {
+            for (int i = 0; i <= I; i++) {
+                double m = P[i][k];
+                double m1 = i == 0 ? P[I][k] : P[i - 1][k];
+                double m2 = i == I ? P[1][k] : P[i + 1][k];
 
-/*
-        for (int k = 1; k <= K; k++) {
-            P[0][k] = P[1][k];
-            P[I][k] = P[I - 1][k];
+                P[i][k + 1] =
+                        (ht * Constants.K * (m2 - 2 * m + m1)) / (Constants.C * hx * hx) + m;
+            }
+            P[0][k] = P[I][k];
         }
-*/
         show(P);
         return P;
     }
@@ -146,12 +141,12 @@ public class NonExplicitMethod {
     }
 
     public static XYChart.Series<Number, Number> getSeries(double R, double T, int I, int K, double time) {
-        double[][] matrix = getCiclicProgonMatrix(R, T, I, K);
+        double[][] matrix = getMatrix(R, T, I, K);
         double L = 2.0 * Math.PI * R;
         double hx = L / I;
         I++;
         XYChart.Series<Number, Number> series = new XYChart.Series();
-        series.setName("Неявная схема");
+        series.setName("Явная схема");
         int t = (int) Math.round(time);
         for (int i = 0; i < I; i++) {
             series.getData().add(new XYChart.Data(hx * i, matrix[i][t]));

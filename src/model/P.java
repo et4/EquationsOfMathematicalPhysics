@@ -27,7 +27,7 @@ public class P extends Function {
             double sum = 0.0;
             sum += getB(k) * sin(k * x / R);
             sum += getA(k) * cos(k * x / R);
-            result += sum * exp(-t * (k * A / R) * (k * A / R));
+            result += sum * exp(-t * (K / C) * (k / R) * (k / R));
         }
         double a0 = 0.5;
         result += a0 / 2.0;
@@ -82,7 +82,7 @@ public class P extends Function {
         double sum = 0.0;
         sum += getB(k) * sin(k * x / R);
         sum += getA(k) * cos(k * x / R);
-        result += sum * exp(-t * (k * A / R) * (k * A / R));
+        result += sum * exp(-t * (K / C) * (k / R) * (k / R));
         double a0 = 0.5;
         result += a0 / 2.0;
         return result;
