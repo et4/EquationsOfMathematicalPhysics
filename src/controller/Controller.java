@@ -10,9 +10,11 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
+import model.P;
 import model.Q;
 import util.Constants;
 import util.ExplicitMethod;
+import util.NonExplicitMethod;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,13 +57,17 @@ public class Controller implements Initializable {
     public void okEvent() {
         chart.getData().clear();
 
-        Q q = new Q(slider.getValue());
-        chart.getData().add(q.getSeries());
+       /* Q q = new Q(slider.getValue());
+        chart.getData().add(q.getSeries());*/
+        P p = new P(slider.getValue());
+        chart.getData().add(p.getSeries());
 
         int I = Integer.parseInt(textBoxI.getText());
         int K = Integer.parseInt(textBoxK.getText());
         double time = slider.getValue();
-        chart.getData().add(ExplicitMethod.getSeries(Constants.L, Constants.T,
+        chart.getData().add(NonExplicitMethod.getSeries(Constants.R, Constants.T,
                 I, K, time));
+        /*chart.getData().add(ExplicitMethod.getSeries(Constants.L, Constants.T,
+                I, K, time));*/
     }
 }

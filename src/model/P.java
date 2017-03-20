@@ -10,19 +10,18 @@ public class P extends Function {
     }
 
 
-    static private double getA(int k) {
+    static double getA(int k) {
         return 2.0 * (2.0 * cos(k * PI / 2.0) - 1.0 - cos(k * PI)) / (k * k * PI * PI);
     }
 
-    static private double getB(int k) {
+    static double getB(int k) {
         return 2.0 * (2.0 * sin(k * PI / 2.0) - sin(k * PI)) / (k * k * PI * PI);
     }
 
 
     @Override
     public double getValue(double x) {
-        double epsilon = 0.0001;
-        int n = computeDepth(epsilon, t);
+        int n = computeDepth(t, 0.0001);
         double result = 0.0;
         for (int k = 1; k < n; k++) {
             double sum = 0.0;
@@ -35,21 +34,20 @@ public class P extends Function {
         return result;
     }
 
-    static private double func(double precision, double n, double t) {
-        return ((6.0 * C * R * R) / (PI * PI * n * n * K * t))
-                * exp(-(n * n * K * t) / (C * R * R)) - precision;
+    static private double func(double n, double t) {
+        return ((6.0 * C * R * R) / (PI * PI * n * n * n * K * t))
+                * exp(-(n * n * K * t) / (C * R * R));
     }
 
     // численно ищем
     static private double estDepthRoot(double a, double b, double eps, double t) {
-        double fasr = func(eps, a, t);
         do {
             // Вычисляем значение функции в середине промежутка.
             double m = (a + b) / 2;
-            double fm = func(eps, m, t);
+            double fm = func(m, t);
             // Вычисляем новый отрезок
 
-            if ((fasr * fm) > 0) {
+            if (fm > eps) {
                 a = m;
             } else {
                 b = m;
@@ -64,17 +62,17 @@ public class P extends Function {
     }
 
     static public int estimatingDepth(double precision, double epsilon, double x, double t) {
-        int depthTheor = computeDepth(epsilon, t);
+        int depthTheor = computeDepth(t, epsilon);
 
         double fullSum = 0.0;
         for (int k = 0; k <= depthTheor; k++) {
             fullSum += oneItemForSum(k, t, x);
         }
-        int depthPract = 0;
-        double partSum = 0.0;
-        while (Math.abs(fullSum - partSum) > precision * epsilon) {
-            depthPract++;
-            partSum += oneItemForSum(depthPract, t, x);
+        int depthPract = depthTheor;
+        double partSum = fullSum;
+        while (Math.abs(fullSum - partSum) > epsilon) {
+            partSum -= oneItemForSum(depthPract, t, x);
+            depthPract--;
         }
         return depthPract;
     }
@@ -91,10 +89,10 @@ public class P extends Function {
     }
 
     public static void main(String[] args) {
-        double t = 0.0;
+        double t = 0.5;
         double x = 0.0;
-        double eps = 0.0001;
-        System.out.println(computeDepth(eps, t));
+        double eps = 0.01;
+        System.out.println(computeDepth(t,eps));
         System.out.println(estimatingDepth(1, eps, x, t));
     }
 }
